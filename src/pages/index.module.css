@@ -21,3 +21,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.darkHeader {
+  --ifm-hero-background-color: var(--ifm-color-primary-darkest);
+  --ifm-hero-text-color: var(--ifm-font-color-base-inverse);
+}
