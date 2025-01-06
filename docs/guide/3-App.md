@@ -1,16 +1,16 @@
 ---
-sidebar_label: '2 - Web interface'
+sidebar_label: '3 - App'
 ---
 
-# 2 - Web interface
+# 3 - App
 
-This chapter will guide you through the necessary steps to get the web interface working.
+This chapter will guide you through the necessary steps to get the App working.
 
-After you installed the plugin, you may have to change some settings to access the web interface.
+After you installed the plugin, you may have to change some settings to use the App.
 
 ## Port
 
-The usage of the plugin requires (at the moment) an open port on your server, so you can reach the web server through the web interface or the app. By default, the web server and interface is accessible through `https://minecraft.example.com:5718` (`minecraft.example.com` is your server domain or IP). If you need to change the port (`5718` by default) you can do that inside the file `/plugins/ServerCtrl/config.yml`. 
+The usage of the plugin requires (at the moment) an open port on your server, so you can reach the web server through the web interface or the app. By default, your server is accessible through `minecraft.example.com:5718` (`minecraft.example.com` is **your** server domain or IP) and with the `HTTPS` checkbox ticked. If you need to change the port (`5718` by default) you can do that inside the file `/plugins/ServerCtrl/config.yml`.
 
 ## HTTPS
 
@@ -23,38 +23,28 @@ HTTPS however, requires the server to provide a certificate to ensure an encrypt
 You should never use just HTTP communication unless you really know what you are doing. HTTPS is used to ensure an encrypted communication between you and the server. If you don't use it, you put your server at a high risk of getting hacked. This applies to the app as well as the web interface.
 :::
 
-### Temporarily trust the certificate
+### Manually trust the certificate
 
-After you open the web interface you will probably get a message similar to the following:
+After you added your server to the App you will get a message similar to the following:
 
 <img
-  src={require('./img/https1.png').default}
+  src={require('./img/https_app.png').default}
   alt="Connection is not secure"
-  width="70%"
+  width="40%"
   style={{display: 'block', marginLeft: 'auto', marginRight: 'auto', marginBottom: '0.5rem'}}
 />
 
-You can click on `Proceed to minecraft.example.com (unsafe)` at the bottom to let your device temporarily trust the provided certificate. 
-
-If the text at the bottom is missing, just click the `Advanced` button on the left. 
+You can click on `Yes` at the bottom to let the App trust the provided certificate.
 
 :::warning
-You should use this option only to change the necessary settings for the next two options.
+This option is pretty safe to use with the app. Whenever the certificate changes (e.g. when someone is trying to intercept the traffic to get your password) the app will send you a new notification before connecting. You should accept the warning **only** if **you** changed the certificate. However, I still recommend to get a proper certificate.
 :::
-
-### Add to trust store
-
-To let your device trust that certificate permanently, you can add the certificate to the trust store of your device.
-
-For this it is necessary to generate a new certificate with your correct data. To do this, choose the previous method to access the web interface. Then go to `settings > Generate new HTTPS certificate`. Now put in the IP-Address or domain you will use to access the web interface. After the certificate is generated, you have to restart your server. 
-
-You can now install the file `/plugins/ServerCtrl/RootCA.cer` on all the devices you want to access the web interface from. For a detailed tutorial on how to do that, simply google "How to install a RootCA on [Device]" and replace [Device] with Android, Windows, Linux, MacOS, etc. Alternatively you can head over to the Discord server and ask for help.
 
 ### Get a proper certificate
 
-To get the best security without the need to install a certificate on all devices you can simply get a proper certificate from e.g. [ZeroSSL](https://zerossl.com/) or LetsEncrypt. All you need is a domain, you can get a free subdomain on [dynu.com](https://www.dynu.com).
+To get the best security you can simply get a proper certificate from e.g. [ZeroSSL](https://zerossl.com/) or LetsEncrypt. All you need is a domain, you can get a free subdomain on [dynu.com](https://www.dynu.com).
 
-The following steps will show how to use ZeroSSL in combination with dynu.com to get a certificate:
+The following steps will show how to use ZeroSSL in combination with dynu.com to get a certificate.
 
 #### 1. Create an account on dynu.com and zerossl.com
 
@@ -95,16 +85,16 @@ Now you can go back to ZeroSSL and click on _Next Step_ and _Verify Domain_.
 
 If your domain got verified successfully, you can download the necessary files. Please choose `Default Format` and click on _Download Certificate (.zip)_. After the file is downloaded, extract the zip archive, you should see three files in there: `ca_bundle.crt`, `certificate.crt` and `private.key`.
 
-Now open the web interface and go to `Settings > Upload HTTPS certificate`. For the _Certificate file_ you will choose `certificate.crt` and for the _Certificate key file_ `private.key`.
+Now open the App (Access your server through the [manual trust method](#manually-trust-the-certificate)) and go to `Settings > Upload HTTPS certificate`. For the _Certificate file_ you will choose `certificate.crt` and for the _Certificate key file_ `private.key`.
 
 After you uploaded both files, you will need to restart the server.
 
 #### 6. Congratulations
 
-You can now access the web interface through your chosen domain and port (e.g. https://serverctrl.freeddns.org:5718) in a secured way. I know these are quite a lot of steps but if you don't want your server to get hacked (That's not a joke), you should do it.
+You can now access the Server with the App through your chosen domain and port (e.g. https://serverctrl.freeddns.org:5718) in a secured way. For this you have to re-add your server to the App with the chosen domain and port. I know these are quite a lot of steps but if you don't want your server to get hacked (That's not a joke), you should do it.
 
 :::tip
-This is the recommended method and allows access from all your devices without configuring anything on them.
+This is the recommended method and allows access from all your devices.
 :::
 
 ## Other options
