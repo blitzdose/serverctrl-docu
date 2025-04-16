@@ -1,0 +1,131 @@
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 2rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: start;
+  gap: 1rem;
+  position: relative;
+  margin-bottom: -50px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: var(--ifm-container-width);
+  padding: 0 var(--ifm-spacing-horizontal);
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.version {
+  background-color: var(--ifm-background-color);
+  border: 2px solid white;
+  border-radius: 999px;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+  color: white;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.eta {
+  margin-top: 0.4rem;
+  font-size: medium;
+  font-weight: normal;
+  margin-bottom: 0.2rem;
+  width: 8rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    white,
+    white 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  transform: translateX(-50%);
+  z-index: -1;
+  bottom: -50px;
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr; /* Single column layout for smaller screens */
+    gap: 0;
+  }
+
+  .left, .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  .left > *, .right > * {
+    width: 100%;
+  }
+
+  .center {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .row {
+    margin-bottom: 0;
+  }
+
+  .container {
+    margin-bottom: 0;
+  }
+
+  .version {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .timeline::before {
+    bottom: 0;
+  }
+}
+
+.left, .right {
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  padding: 2rem 0;
+}
+
+.timelineadmonition {
+  margin-bottom: 0;
+}

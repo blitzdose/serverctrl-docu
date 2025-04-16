@@ -94,6 +94,11 @@ const config = {
             position: 'left',
             label: 'Documentation',
           },
+          {
+            to: '/roadmap',
+            position: 'left',
+            label: 'Roadmap'
+          },
           //{to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/blitzdose/ServerCtrl',

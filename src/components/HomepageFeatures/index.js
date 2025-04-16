@@ -28,8 +28,7 @@ const FeatureList = [
     Svg: require('@site/static/img/code.svg').default,
     description: (
       <>
-        ServerCtrl is fully open source. Found flaws in the code? 
-        <a target='_blank' href='https://github.com/blitzdose/ServerCtrl/issues'>Tell me!</a>
+        ServerCtrl is fully open source. Found flaws in the code? <a target='_blank' href='https://github.com/blitzdose/ServerCtrl/issues'>Tell me!</a>
       </>
     ),
   },
